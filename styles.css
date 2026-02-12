@@ -1,0 +1,307 @@
+:root{
+  --bg: #0b0f16;
+  --card: rgba(255,255,255,.06);
+  --stroke: rgba(255,255,255,.10);
+  --stroke2: rgba(255,255,255,.18);
+  --text: #f6f8ff;
+  --muted: rgba(255,255,255,.70);
+  --muted2: rgba(255,255,255,.55);
+  --blue: #4aa3ff;
+  --blue2: rgba(74,163,255,.20);
+  --shadow: 0 14px 42px rgba(0,0,0,.45);
+  --r: 18px;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background:
+    radial-gradient(1000px 600px at 20% 0%, rgba(74,163,255,.20), transparent 55%),
+    radial-gradient(900px 650px at 80% 10%, rgba(255,255,255,.06), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  display:flex;
+  justify-content:center;
+  padding: 22px;
+}
+
+.wrap{
+  width: min(820px, 100%);
+  display:flex;
+  justify-content:center;
+}
+
+.card{
+  width:100%;
+  background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+  border: 1px solid var(--stroke);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.hidden{ display:none; }
+
+.topbar{
+  display:flex;
+  justify-content:center;
+  padding: 4px 0 12px;
+}
+
+.scoreWrap{
+  text-align:center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: rgba(0,0,0,.18);
+  min-width: 140px;
+}
+.scoreLabel{
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--muted2);
+}
+.scoreValue{
+  font-size: 22px;
+  font-weight: 850;
+  letter-spacing: .5px;
+  margin-top: 2px;
+}
+
+.grid{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  padding: 6px 0 10px;
+}
+
+.col{
+  width: 62px;
+  border-radius: 16px;
+  border: 1px solid var(--stroke);
+  background: rgba(0,0,0,.14);
+  overflow:hidden;
+  cursor:pointer;
+  user-select:none;
+  transition: transform .08s ease;
+}
+.col:active{ transform: scale(.98); }
+
+.cell{
+  height: 56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size: 22px;
+  font-weight: 850;
+  color: var(--muted2);
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.cell:first-child{ border-top:none; }
+
+.cell.mid{
+  background: var(--blue2);
+  color: var(--text);
+  position:relative;
+}
+.cell.mid::after{
+  content:"";
+  position:absolute;
+  inset: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(74,163,255,.45);
+  pointer-events:none;
+}
+
+.col.hinted{
+  outline: 2px solid rgba(74,163,255,.55);
+  box-shadow: 0 0 0 6px rgba(74,163,255,.10);
+}
+
+.wordLine{
+  display:flex;
+  justify-content:center;
+  padding: 6px 0 8px;
+}
+
+.currentWord{
+  max-width: 100%;
+  text-align:center;
+  font-weight: 900;
+  letter-spacing: 6px;
+  font-size: clamp(18px, 4vw, 28px);
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px dashed rgba(255,255,255,.18);
+  background: rgba(0,0,0,.18);
+
+  /* IMPORTANT: keep it 1 line */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.controls{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  padding: 6px 0 4px;
+}
+
+.btn{
+  border:none;
+  cursor:pointer;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 800;
+  color: var(--text);
+  background: rgba(255,255,255,.08);
+  border: 1px solid var(--stroke2);
+  transition: transform .08s ease, background .15s ease, opacity .2s ease;
+}
+.btn:hover{ background: rgba(255,255,255,.12); }
+.btn:active{ transform: scale(.98); }
+
+.primary{
+  background: linear-gradient(180deg, rgba(74,163,255,.95), rgba(74,163,255,.70));
+  border: 1px solid rgba(74,163,255,.60);
+}
+.primary:hover{
+  background: linear-gradient(180deg, rgba(74,163,255,1), rgba(74,163,255,.78));
+}
+
+.ghost{
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.16);
+}
+
+.status{
+  margin: 10px auto 0;
+  max-width: 640px;
+  text-align:center;
+  font-size: 13px;
+  color: var(--muted);
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.14);
+  min-height: 40px;
+}
+
+.jarBox{
+  margin-top: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.14);
+  padding: 12px;
+}
+.jarTitle{
+  font-weight: 850;
+  letter-spacing: .3px;
+  margin-bottom: 8px;
+}
+.jarHidden{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  min-height: 28px;
+}
+.jarToken{
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.35);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.jarNote{
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted2);
+}
+
+.finalTitle{
+  text-align:center;
+  font-size: 18px;
+  font-weight: 900;
+  margin-top: 2px;
+}
+.finalSub{
+  text-align:center;
+  color: var(--muted2);
+  font-size: 13px;
+  margin: 6px 0 12px;
+}
+
+.reorderList{
+  list-style:none;
+  padding:0;
+  margin:0 auto 12px;
+  max-width: 520px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.reorderItem{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  cursor: grab;
+  user-select:none;
+}
+.reorderItem:active{ cursor: grabbing; }
+.reorderWord{
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+.reorderHint{
+  font-size: 12px;
+  color: rgba(255,255,255,.55);
+}
+
+.finalButtons{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top: 6px;
+}
+
+.popup{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(0,0,0,.55);
+  padding: 18px;
+}
+.popupCard{
+  width: min(420px, 100%);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(15,18,26,.96);
+  box-shadow: 0 18px 55px rgba(0,0,0,.55);
+  padding: 18px;
+  text-align:center;
+}
+.popupText{
+  font-size: 16px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+/* ensure popup stays hidden when it has .hidden */
+.popup.hidden{
+  display:none;
+}

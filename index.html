@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title> TypeShift Game </title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <!-- GAME VIEW -->
+    <section id="gameView" class="card">
+      <div class="topbar">
+        <div class="scoreWrap">
+          <div class="scoreLabel">SCORE</div>
+          <div id="score" class="scoreValue">0</div>
+        </div>
+      </div>
+
+      <div id="grid" class="grid" aria-label="Typeshift grid"></div>
+
+      <div class="wordLine">
+        <div id="currentWord" class="currentWord" aria-label="current word">----</div>
+      </div>
+
+      <div class="controls">
+        <button id="submitBtn" class="btn primary">Submit</button>
+        <button id="scoreBtn" class="btn">Score word</button>
+        <button id="hintBtn" class="btn">Hint</button>
+        <button id="resetBtn" class="btn ghost">Reset</button>
+      </div>
+
+      <div id="status" class="status">Click a column to rotate letters.</div>
+
+      <div class="jarBox" aria-label="Hidden word box">
+        <div class="jarTitle">Hidden words box</div>
+        <div id="jarHidden" class="jarHidden"></div>
+        <div class="jarNote">Locked until you finish all levels.</div>
+      </div>
+    </section>
+
+    <!-- FINAL VIEW -->
+    <section id="finalView" class="card hidden">
+      <div class="finalTitle">Rearrange the words</div>
+      <div class="finalSub">Drag to reorder until it forms a sentence.</div>
+
+      <ul id="reorderList" class="reorderList" aria-label="reorder list"></ul>
+
+      <div id="finalStatus" class="status">Make it say: will you be my valentine</div>
+
+      <div class="finalButtons hidden" id="finalButtons">
+        <button id="noBtn" class="btn ghost">No</button>
+        <button id="yesBtn" class="btn primary">Yes</button>
+      </div>
+
+      <div id="popup" class="popup hidden" role="dialog" aria-modal="true">
+        <div class="popupCard">
+          <div class="popupText">Yaaay! See you on Saturday! :D</div>
+          <button id="closePopupBtn" class="btn primary">OK</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
